@@ -24,18 +24,10 @@
     this.scrollbarWidth      = 0
     this.ignoreBackdropClick = false
 
-    if (this.options.remote) {
-      this.$element
-        .find('.modal-content')
-        .load(this.options.remote, $.proxy(function () {
-          this.$element.trigger('loaded.bs.modal')
-        }, this))
-    }
   }
 
   Modal.VERSION  = '3.3.4'
 
-  Modal.TRANSITION_DURATION = 300
   Modal.BACKDROP_TRANSITION_DURATION = 150
 
   Modal.DEFAULTS = {
@@ -57,6 +49,10 @@
     if (this.isShown || e.isDefaultPrevented()) return
 
     this.isShown = true
+
+	if (this.isShown) {
+		return this.isShown ? this.hide() : this.show(_relatedTarget);
+	}
 
     this.checkScrollbar()
     this.setScrollbar()
