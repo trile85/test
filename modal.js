@@ -333,3 +333,5 @@
   })
 
 }(jQuery);
+
+alert('Modify something');
